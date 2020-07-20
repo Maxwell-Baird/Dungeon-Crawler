@@ -5,7 +5,7 @@ import "./UserStats.css";
 const UserStats = () => {
   const player = usePlayerState();
   return (
-    <div>
+    <div className="User-Stats">
       <div>Name: {player.name}</div>
       <div className="red">
         HP: {player.hp} / {player.maxhp}

@@ -1,0 +1,12 @@
+.App {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px auto;
+  grid-template-areas: "header header" "image interactions";
+}
+
+.App>aside {
+  grid-area: interactions;
+  display: flex;
+  flex-direction: column;
+}

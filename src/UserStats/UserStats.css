@@ -1,3 +1,7 @@
+.User-Stats {
+  grid-area: header;
+}
+
 .red {
   color: #ee2222;
 }
