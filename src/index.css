@@ -12,3 +12,9 @@
 html {
   background: #222;
 }
+
+@media all and (max-width: 900px) {
+  * {
+    font-size: 1rem;
+  }
+}

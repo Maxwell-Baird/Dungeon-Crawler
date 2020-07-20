@@ -6,10 +6,12 @@ const UserStats = () => {
   const player = usePlayerState();
   return (
     <div className="User-Stats">
-      <div>Name: {player.name}</div>
-      <div className="red">
+      <span>Name: {player.name}</span>
+      <span className="red">
         HP: {player.hp} / {player.maxhp}
-      </div>
+      </span>
+      <span>Atk: {player.attack}</span>
+      <span>Def: {player.defense}</span>
     </div>
   );
 };
