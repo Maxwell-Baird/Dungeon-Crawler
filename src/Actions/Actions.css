@@ -1,0 +1,9 @@
+.Actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.Actions a:hover {
+  background: #eee;
+  color: #222;
+}
