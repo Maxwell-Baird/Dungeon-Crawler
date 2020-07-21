@@ -1,16 +1,24 @@
 import React from "react";
 import "./App.css";
 import UserStats from "../UserStats/UserStats";
-import { usePlayerDispatch } from "../playerState";
+import Map from "../Map/Map";
+import Actions from "../Actions/Actions";
+import Description from "../Description/Description";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
-  const { initialize, hurt, heal } = usePlayerDispatch();
   return (
     <div className="App">
-      <UserStats />
-      <button onClick={() => initialize("sbeven")}>Init Player</button>
-      <button onClick={() => hurt(3)}>Hurt Player</button>
-      <button onClick={() => heal(3)}>Heal Player</button>
+      <Switch>
+        <Route path="/game">
+          <UserStats />
+          <Route path="/game/map" component={Map} />
+          <aside>
+            <Description />
+            <Actions />
+          </aside>
+        </Route>
+      </Switch>
     </div>
   );
 }
