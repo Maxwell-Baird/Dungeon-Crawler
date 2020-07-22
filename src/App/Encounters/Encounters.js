@@ -9,12 +9,6 @@ const Encounters = () => {
   
   return (
     <section className='ecounters-section'>
-        {/* <div>
-            <div>Name: {player.name}</div>
-            <div className="red">
-            HP: {player.hp} / {player.maxhp}
-        </div>
-        </div> */}
         <div className='main-container'>
             <div className='encounter-div'>
                 <p>Encounters</p>
