@@ -14,7 +14,7 @@ export const reducer = (state, action) => {
     case EncounterActions.NEW_ENCOUNTER_RESPONSE:
       return {
         isLoading: false,
-        npc: action.npc,
+        npc: { ...action.npc, maxHealth: action.npc.health },
       };
     case EncounterActions.ENCOUNTER_COMPLETE:
       return {
