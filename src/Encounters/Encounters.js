@@ -10,8 +10,8 @@ const Encounters = () => {
 //   const player = usePlayerState();
   
   return (
-    <section className='ecounters-section'>
-                <h1>Encounter Made It</h1>
+    <section className='encounters-section'>
+        <h1>Encounter Made It</h1>
     </section>
   );
 };
