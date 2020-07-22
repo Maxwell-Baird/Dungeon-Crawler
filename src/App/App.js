@@ -20,6 +20,8 @@ function App() {
             <Actions />
           </aside>
         </Route>
+        <Route exact="/">
+        </Route>
       </Switch>
     </div>
   );
