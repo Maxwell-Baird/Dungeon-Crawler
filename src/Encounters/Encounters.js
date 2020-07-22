@@ -11,9 +11,7 @@ const Encounters = () => {
   
   return (
     <section className='ecounters-section'>
-            <div className='encounter-div'>
-                <p>Encounter Made It</p>
-            </div>
+                <h1>Encounter Made It</h1>
     </section>
   );
 };

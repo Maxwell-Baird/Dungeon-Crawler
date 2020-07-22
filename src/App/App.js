@@ -14,7 +14,7 @@ function App() {
         <Route path="/game">
           <UserStats />
           <Route path="/game/map" component={Map} />
-          <Route path="/game/encounter" component={Encounters}/>
+          <Route path="/places/:location/encounter" component={Encounters}/>
           <aside>
             <Description />
             <Actions />
