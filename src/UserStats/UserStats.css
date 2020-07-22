@@ -1,3 +1,12 @@
+.User-Stats {
+  grid-area: header;
+  display: flex;
+}
+
+.User-Stats>* {
+  margin-right: 2rem;
+}
+
 .red {
-  color: #ee2222;
+  color: #f66;
 }
