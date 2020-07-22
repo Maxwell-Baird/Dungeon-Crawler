@@ -37,8 +37,21 @@ export const useEncounterDispatch = () => {
   }
 
   const getNewEncounter = useCallback(
-    (area) => {
+    async (area) => {
       dispatch({ type: EncounterActions.NEW_ENCOUNTER_LOAD });
+
+      const allNpcs = await (
+        await fetch("http://localhost:8000/api/v1/npcs")
+      ).json();
+
+      const locationNpcs = allNpcs.filter(
+        (npc) => npc.location.toLowerCase() === area
+      );
+
+      dispatch({
+        type: EncounterActions.NEW_ENCOUNTER_RESPONSE,
+        npc: locationNpcs[Math.floor(Math.random() * locationNpcs.length)],
+      });
     },
     [dispatch]
   );
