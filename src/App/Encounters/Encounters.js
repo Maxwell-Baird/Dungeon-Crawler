@@ -4,7 +4,9 @@ import { usePlayerState } from "../playerState";
 
 
 const Encounters = () => {
+//WIll need conditionally render this component based on wether the encounter is a battle or a friendly npc
   const player = usePlayerState();
+  
   return (
     <section className='ecounters-section'>
         {/* <div>
