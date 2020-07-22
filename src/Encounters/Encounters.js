@@ -1,4 +1,5 @@
 import React from "react";
+import './Encounters.css'
 // import { usePlayerState } from "../playerState";
 
 
@@ -10,11 +11,9 @@ const Encounters = () => {
   
   return (
     <section className='ecounters-section'>
-        <div className='main-container'>
             <div className='encounter-div'>
                 <p>Encounter Made It</p>
             </div>
-        </div>
     </section>
   );
 };
