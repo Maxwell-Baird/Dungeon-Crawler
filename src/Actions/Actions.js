@@ -5,9 +5,9 @@ import "./Actions.css";
 const Actions = () => {
   return (
     <div className="Actions">
-      <Link to="/places/forest/encounter">Go to the forest</Link>
-      <Link to="/places/caves/encounter">Go to the caves</Link>
-      <Link to="/places/beach/encounter">Go to the beach</Link>
+      <Link to="/game/forest/encounter">Go to the forest</Link>
+      <Link to="/game/caves/encounter">Go to the caves</Link>
+      <Link to="/game/beach/encounter">Go to the beach</Link>
     </div>
   );
 };
