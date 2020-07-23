@@ -3,11 +3,18 @@
   flex-direction: column;
 }
 
-.Actions a:hover {
+.Actions a:hover, .Actions button:hover {
   background: #eee;
   color: #222;
 }
 
 .Actions {
   margin-top: 200px;
+}
+
+.Actions button {
+  background: none;
+  border: none;
+  text-align: left;
+  text-decoration: underline;
 }

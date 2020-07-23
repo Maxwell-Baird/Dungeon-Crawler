@@ -16,6 +16,8 @@ const Encounters = ({ location }) => {
           <h3>
             {npc.health} / {npc.maxHealth} hp
           </h3>
+          <h3>ATK: {npc.attack}</h3>
+          <h3>DEF: {npc.defense}</h3>
         </>
       ) : (
         "Loading..."
