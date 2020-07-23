@@ -8,7 +8,7 @@ const Encounters = () => {
 //DO we need the props to be able to use player actions?
 //This is a basic layout, things can change
 //   const player = usePlayerState();
-  
+
   return (
     <section className='encounters-section'>
         <h1>Encounter Made It</h1>

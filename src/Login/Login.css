@@ -1,0 +1,21 @@
+.loginSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width:100vw;
+}
+
+.title {
+  font-size: 2em;
+}
+
+.heroName {
+  text-align: center;
+  color:black;
+  margin-top: .4em;
+}
+
+.login {
+  color:black;
+}

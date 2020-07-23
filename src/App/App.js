@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import UserStats from "../UserStats/UserStats";
 import Map from "../Map/Map";
+import Login from '../Login/Login'
 import Actions from "../Actions/Actions";
 import Description from "../Description/Description";
 import Encounters from "../Encounters/Encounters"
@@ -19,6 +20,8 @@ function App() {
             <Description />
             <Actions />
           </aside>
+        </Route>
+        <Route exact="/" component={Login}>
         </Route>
       </Switch>
     </div>
