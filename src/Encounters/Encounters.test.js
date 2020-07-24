@@ -16,7 +16,7 @@ describe("Encounters", () => {
 //   it("should show the user some possible actions`", () => {
 //     const { getAllByText } = render(
 //       <MemoryRouter>
-//         <Actions />
+//         <Encounters />
 //       </MemoryRouter>
 //     );
 //     expect(getAllByText("Go to", { exact: false }).length).toBeGreaterThan(0);
