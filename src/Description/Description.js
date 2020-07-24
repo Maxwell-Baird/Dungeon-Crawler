@@ -1,11 +1,14 @@
 import React from "react";
 import "./Description.css";
 import { usePlayerState } from "../playerState";
+import { useEncounterState } from "../encounterState";
 
 const Description = () => {
   const player = usePlayerState();
+  const { npc } = useEncounterState();
   // starting string, can be changed according to player's last location
-  let description = "You are in a grassy field. ";
+  let description =
+    npc !== null ? `You see a ${npc.name}. ` : "You are in a grassy field. ";
 
   // array of arrays, first element of each subarray is a query into the player's stats,
   // second element is a bit of info to add to the player's description
