@@ -6,6 +6,7 @@ import React, {
 } from "react";
 
 import { reducer, EncounterActions } from "./reducer";
+import { usePlayerState, usePlayerDispatch } from "../playerState";
 
 const initialContext = {
   isLoading: false,
@@ -31,6 +32,10 @@ export const useEncounterState = () => useContext(StateContext);
 
 export const useEncounterDispatch = () => {
   const dispatch = useContext(DispatchContext);
+
+  const playerState = usePlayerState();
+  const playerDispatch = usePlayerDispatch();
+  const npcState = useEncounterState();
 
   if (dispatch === undefined) {
     throw new Error("useDispatch used outside of provider");
@@ -63,8 +68,22 @@ export const useEncounterDispatch = () => {
     [dispatch]
   );
 
-  return React.useMemo(() => ({ getNewEncounter, completeEncounter }), [
+  const attack = useCallback(() => {
+    if (Math.random() < 0.9)
+      dispatch({
+        type: EncounterActions.HURT,
+        hp:
+          Math.random() < 0.05 ? playerState.attack * 1.5 : playerState.attack,
+      });
+    if (npcState.npc.health <= 0) {
+      dispatch({ type: EncounterActions.WIN });
+    }
+    if (Math.random() < 0.9) playerDispatch.hurt(3);
+  }, [dispatch, playerDispatch, playerState.attack, npcState.npc]);
+
+  return React.useMemo(() => ({ getNewEncounter, completeEncounter, attack }), [
     getNewEncounter,
     completeEncounter,
+    attack,
   ]);
 };
