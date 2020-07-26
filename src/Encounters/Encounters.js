@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Encounters.css";
 import { useEncounterDispatch, useEncounterState } from "../encounterState";
 
@@ -6,7 +6,10 @@ const Encounters = ({ location }) => {
   const { npc, isLoading } = useEncounterState();
   const { getNewEncounter } = useEncounterDispatch();
 
-  if (npc === null && !isLoading) getNewEncounter(location);
+  useEffect(() => {
+    debugger;
+    if (!isLoading && npc === null) getNewEncounter(location);
+  }, []);
 
   return (
     <section className="encounters-section">

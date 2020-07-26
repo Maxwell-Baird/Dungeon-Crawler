@@ -69,15 +69,21 @@ export const useEncounterDispatch = () => {
   );
 
   const attack = useCallback(() => {
-    if (Math.random() < 0.9)
+    if (Math.random() < 0.9) {
       dispatch({
         type: EncounterActions.HURT,
         hp:
-          Math.random() < 0.05 ? playerState.attack * 1.5 : playerState.attack,
+          Math.random() < 0.05
+            ? Math.floor(playerState.attack * 1.5)
+            : playerState.attack,
       });
-    if (npcState.npc.health <= 0) {
-      dispatch({ type: EncounterActions.WIN });
+
+      if (npcState.npc.health <= playerState.attack) {
+        playerDispatch.win();
+        dispatch({ type: EncounterActions.WIN });
+      }
     }
+
     if (Math.random() < 0.9) playerDispatch.hurt(3);
   }, [dispatch, playerDispatch, playerState.attack, npcState.npc]);
 
