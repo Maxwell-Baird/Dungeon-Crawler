@@ -84,8 +84,14 @@ export const useEncounterDispatch = () => {
       }
     }
 
-    if (Math.random() < 0.9) playerDispatch.hurt(3);
-  }, [dispatch, playerDispatch, playerState.attack, npcState.npc]);
+    const def = playerState.defense;
+    const defenseMath = Math.min(
+      2.5 * ((2 * Math.log(2 * def + 1)) / (def + 1)),
+      1
+    ); // https://www.desmos.com/calculator/t6g3eenojj
+
+    if (Math.random() < defenseMath) playerDispatch.hurt(3);
+  }, [dispatch, playerDispatch, playerState, npcState.npc]);
 
   return React.useMemo(() => ({ getNewEncounter, completeEncounter, attack }), [
     getNewEncounter,
