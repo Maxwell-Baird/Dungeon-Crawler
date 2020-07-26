@@ -67,13 +67,21 @@ export const usePlayerDispatch = () => {
     [dispatch]
   );
 
+  const win = useCallback(() => {
+    const rn = Math.random(); // randomly increase health, attack, or defense
+    if (rn < 1 / 3) dispatch({ type: PlayerActions.INC_HP });
+    else if (rn < 2 / 3) dispatch({ type: PlayerActions.INC_ATK });
+    else dispatch({ type: PlayerActions.INC_DEF });
+  }, [dispatch]);
+
   return React.useMemo(
     () => ({
       initialize,
       changeName,
       heal,
       hurt,
+      win,
     }),
-    [initialize, changeName, heal, hurt]
+    [initialize, changeName, heal, hurt, win]
   );
 };
