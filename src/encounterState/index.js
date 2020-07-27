@@ -6,6 +6,7 @@ import React, {
 } from "react";
 
 import { reducer, EncounterActions } from "./reducer";
+import { usePlayerState, usePlayerDispatch } from "../playerState";
 
 const initialContext = {
   isLoading: false,
@@ -32,6 +33,10 @@ export const useEncounterState = () => useContext(StateContext);
 export const useEncounterDispatch = () => {
   const dispatch = useContext(DispatchContext);
 
+  const playerState = usePlayerState();
+  const playerDispatch = usePlayerDispatch();
+  const npcState = useEncounterState();
+
   if (dispatch === undefined) {
     throw new Error("useDispatch used outside of provider");
   }
@@ -41,7 +46,7 @@ export const useEncounterDispatch = () => {
       dispatch({ type: EncounterActions.NEW_ENCOUNTER_LOAD });
 
       const allNpcs = await (
-        await fetch("http://localhost:8000/api/v1/npcs")
+        await fetch(process.env.REACT_APP_API_URL + "/npcs")
       ).json();
 
       const locationNpcs = allNpcs.filter(
@@ -63,8 +68,34 @@ export const useEncounterDispatch = () => {
     [dispatch]
   );
 
-  return React.useMemo(() => ({ getNewEncounter, completeEncounter }), [
+  const attack = useCallback(() => {
+    if (Math.random() < 0.9) {
+      dispatch({
+        type: EncounterActions.HURT,
+        hp:
+          Math.random() < 0.05
+            ? Math.floor(playerState.attack * 1.5)
+            : playerState.attack,
+      });
+
+      if (npcState.npc.health <= playerState.attack) {
+        playerDispatch.win();
+        dispatch({ type: EncounterActions.WIN });
+      }
+    }
+
+    const def = playerState.defense;
+    const defenseMath = Math.min(
+      2.5 * ((2 * Math.log(2 * def + 1)) / (def + 1)),
+      1
+    ); // https://www.desmos.com/calculator/t6g3eenojj
+
+    if (Math.random() < defenseMath) playerDispatch.hurt(3);
+  }, [dispatch, playerDispatch, playerState, npcState.npc]);
+
+  return React.useMemo(() => ({ getNewEncounter, completeEncounter, attack }), [
     getNewEncounter,
     completeEncounter,
+    attack,
   ]);
 };
