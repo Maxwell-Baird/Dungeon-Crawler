@@ -41,7 +41,7 @@ export const useEncounterDispatch = () => {
       dispatch({ type: EncounterActions.NEW_ENCOUNTER_LOAD });
 
       const allNpcs = await (
-        await fetch("http://localhost:8000/api/v1/npcs")
+        await fetch(process.env.REACT_APP_API_URL + "/npcs")
       ).json();
 
       const locationNpcs = allNpcs.filter(
