@@ -3,6 +3,9 @@ export const PlayerActions = {
   CHANGE_NAME: "CHANGE_NAME",
   HEAL: "HEAL",
   HURT: "HURT",
+  INC_HP: "INC_HP",
+  INC_ATK: "INC_ATK",
+  INC_DEF: "INC_DEF",
 };
 
 export const reducer = (state, action) => {
@@ -30,6 +33,24 @@ export const reducer = (state, action) => {
       return {
         ...state,
         hp: Math.max(0, state.hp - action.hp),
+      };
+    case PlayerActions.INC_HP:
+      return {
+        ...state,
+        hp: Math.floor(
+          (state.hp / state.maxhp) * Math.floor(state.maxhp * 1.05)
+        ),
+        maxhp: Math.floor(state.maxhp * 1.05),
+      };
+    case PlayerActions.INC_DEF:
+      return {
+        ...state,
+        defense: Math.max(Math.floor(state.defense * 1.05), state.defense + 1),
+      };
+    case PlayerActions.INC_ATK:
+      return {
+        ...state,
+        attack: Math.max(Math.floor(state.attack * 1.05), state.attack + 1),
       };
     default:
       return state;
