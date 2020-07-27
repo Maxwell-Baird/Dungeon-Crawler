@@ -9,22 +9,22 @@ import { EncounterContextProvider } from "./encounterState";
 describe("Encounters", () => {
   it("should render without crashing", () => {
     render(
-        <MemoryRouter>
+      <MemoryRouter>
         <PlayerContextProvider>
-        <EncounterContextProvider>
-            <Encounters />
-        </EncounterContextProvider>
+          <EncounterContextProvider>
+            <Encounters location="forest" />
+          </EncounterContextProvider>
         </PlayerContextProvider>
-        </MemoryRouter>
+      </MemoryRouter>
     );
   });
 
-//   it("should show the user some possible actions`", () => {
-//     const { getAllByText } = render(
-//       <MemoryRouter>
-//         <Encounters />
-//       </MemoryRouter>
-//     );
-//     expect(getAllByText("Go to", { exact: false }).length).toBeGreaterThan(0);
-//   });ss
+  // it("should show the user some possible actions`", () => {
+  //   const { getAllByText } = render(
+  //     <MemoryRouter>
+  //       <Encounters location="forest" />
+  //     </MemoryRouter>
+  //   );
+  //   expect(getAllByText("Go to", { exact: false }).length).toBeGreaterThan(0);
+  // });
 });
