@@ -12,11 +12,10 @@ describe("Encounters", () => {
         <MemoryRouter>
         <PlayerContextProvider>
         <EncounterContextProvider>
-                <Encounters />
+            <Encounters />
         </EncounterContextProvider>
         </PlayerContextProvider>
         </MemoryRouter>
-
     );
   });
 
