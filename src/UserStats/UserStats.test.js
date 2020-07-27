@@ -12,7 +12,7 @@ describe("UserStats", () => {
     expect(getByText("Name:")).toBeInTheDocument();
     expect(getByText("HP: 0 / 0")).toBeInTheDocument();
     expect(getByText("Atk: 0")).toBeInTheDocument();
-    expect(getByText("Deff:")).toBeInTheDocument();
+    expect(getByText("Def: 0")).toBeInTheDocument();
     expect(getByPlaceholderText("Name:")).toBeInTheDocument();
     expect(getByPlaceholderText("HP:")).toBeInTheDocument();
     expect(getByPlaceholderText("Atk:")).toBeInTheDocument();
