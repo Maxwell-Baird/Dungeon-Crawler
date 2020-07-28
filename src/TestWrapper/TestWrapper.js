@@ -9,7 +9,7 @@ import {
   EncounterContextProvider,
   useEncounterState,
   useEncounterDispatch,
-} from "../EncounterState/index";
+} from "../encounterState/index";
 import { render } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 
