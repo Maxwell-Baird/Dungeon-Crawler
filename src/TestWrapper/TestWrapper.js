@@ -4,12 +4,12 @@ import {
   PlayerContextProvider,
   usePlayerState,
   usePlayerDispatch,
-} from "./playerState/index";
+} from "../playerState/index";
 import {
   EncounterContextProvider,
   useEncounterState,
   useEncounterDispatch,
-} from "./EncounterState/index";
+} from "../EncounterState/index";
 import { render } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 

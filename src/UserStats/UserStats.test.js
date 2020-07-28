@@ -1,5 +1,5 @@
 import React from "react";
-import TestWrapper from "../TestWrapper";
+import TestWrapper from "../TestWrapper/TestWrapper";
 import UserStats from "./UserStats";
 import "@testing-library/jest-dom/extend-expect";
 

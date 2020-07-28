@@ -1,12 +1,11 @@
 import React from "react";
-import TestWrapper from "../TestWrapper";
+import TestWrapper from "../TestWrapper/TestWrapper";
 import { render } from "@testing-library/react";
 import Encounters from "./Encounters";
 import "@testing-library/jest-dom/extend-expect";
 import { PlayerContextProvider } from "../playerState";
 import { EncounterContextProvider } from "../encounterState";
 import { getNpcs } from "../ApiCalls";
-
 jest.mock("../ApiCalls", () => ({
   getNpcs: () => [
     {

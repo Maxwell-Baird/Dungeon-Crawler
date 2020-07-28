@@ -9,7 +9,9 @@ const Actions = () => {
     return (
       <div className="Actions">
         {npc.options.map((option) => (
-          <Link to={"encounter/" + option.type}>{option.name}</Link>
+          <Link key={option.name} to={"encounter/" + option.type}>
+            {option.name}
+          </Link>
         ))}
         <button>Run Away</button>
       </div>
