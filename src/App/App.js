@@ -72,7 +72,7 @@ function App() {
             )}
           />
         </Route>
-        <Route exact="/" component={Login}></Route>
+        <Route exact path="/" component={Login}></Route>
       </Switch>
     </div>
   );

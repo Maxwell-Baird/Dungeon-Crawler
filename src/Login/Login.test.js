@@ -1,5 +1,5 @@
 import React from "react";
-import TestWrapper from "../TestWrapper";
+import TestWrapper from "../TestWrapper/TestWrapper";
 import Login from "./Login";
 import "@testing-library/jest-dom/extend-expect";
 import { fireEvent } from "@testing-library/dom";
