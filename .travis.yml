@@ -1,10 +1,11 @@
 language: node_js
-node_js:
-  - 12.10.0
 cache: npm
-
 install:
   - npm install
-
 script:
   - npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: Sq2gaYJ522PE5FzHz6G3MAbMKWw7Y4LeUyAhWXYa1O2HpVhSwnF6MkTI/r9PPuX/Dbpj7cS8MZAeRQEuGmNwLQ8wo9P2gjhUTde7ZOapJsVfSE3LA01OKyj5t0aTfdlUE+5XpOfdhDdUcR/cfRPeC+gKs57hB3PdZYMN0RqpPosw1F7zr7axaZIoDKz7Y5O5092K5txL4mgNo6m8lYoGDIjQCD5RbVCfoNdWy7VhA+cWwq7eYpl82FWJGeTTPynTPYDICjX5z/RXehSXwmOmpl5OM90U5rj02OUwpg7tYGjvmAZ2bYMg0YU37RPS0qwZakm4f0iw1pwxPmlwauWes/XdixINFvLWEnbh38IInzp0un/y4dZKgU1veALgPwdHSKpS3BN2OtAq6GYpEnrI/5Jxq3cQwn9yaEPyGc8ScJT3zIzYIa0dPSQKu/NULjuTU4BtGXBSp3rUzJTSiaJRz9cCKvwZSAVKqsdJ47QMFwl5xy9A5llagOo9Wmoxr57aMNlH1XdvvKeyBK/6C+LRghs7LtKj55E1zdPuGvJR9Z6RKXJSHTg0awu4cAHFMXCSuP2eMTBBpPNeiO8DJYFiLdH2CQKMW7Vo51LLQ2yDkOGfHfWJR5kEXD8SAVUe6YxYcVRq9+NdLe7KgM5XJbgyBb0M8Xwh4KIqGH4IPTxJ0kA=
+  app: untitled-dungeon-crawler
