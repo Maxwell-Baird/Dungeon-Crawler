@@ -7,9 +7,11 @@ import Actions from "../Actions/Actions";
 import Description from "../Description/Description";
 import Encounters from "../Encounters/Encounters";
 import FightActions from "../Fight/FightActions/FightActions";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { usePlayerState } from "../playerState";
 
 function App() {
+  const isLoggedIn = usePlayerState().name !== "";
   return (
     <div className="App">
       <Switch>
@@ -17,15 +19,19 @@ function App() {
           <UserStats />
           <Route
             path="/game/map"
-            render={() => (
-              <>
-                <Map />
-                <aside>
-                  <Description />
-                  <Actions />
-                </aside>
-              </>
-            )}
+            render={() => {
+              return isLoggedIn ? (
+                <>
+                  <Map />
+                  <aside>
+                    <Description />
+                    <Actions />
+                  </aside>
+                </>
+              ) : (
+                <Redirect to="/" />
+              );
+            }}
           />
           <Route
             exact
@@ -34,25 +40,29 @@ function App() {
               match: {
                 params: { location, action },
               },
-            }) => (
-              <>
-                <Encounters location={location} />
-                <aside>
-                  {action === "aggressive" ? (
-                    <>
-                      <FightActions />
-                    </>
-                  ) : (
-                    <>
-                      <p>
-                        This is not implemented yet. Go{" "}
-                        <Link to="/game/map">back</Link>
-                      </p>
-                    </>
-                  )}
-                </aside>
-              </>
-            )}
+            }) => {
+              return isLoggedIn ? (
+                <>
+                  <Encounters location={location} />
+                  <aside>
+                    {action === "aggressive" ? (
+                      <>
+                        <FightActions />
+                      </>
+                    ) : (
+                      <>
+                        <p>
+                          This is not implemented yet. Go{" "}
+                          <Link to="/game/map">back</Link>
+                        </p>
+                      </>
+                    )}
+                  </aside>
+                </>
+              ) : (
+                <Redirect to="/" />
+              );
+            }}
           />
           <Route
             exact
@@ -61,18 +71,22 @@ function App() {
               match: {
                 params: { location },
               },
-            }) => (
-              <>
-                <Encounters location={location} />
-                <aside>
-                  <Description />
-                  <Actions />
-                </aside>
-              </>
-            )}
+            }) => {
+              return isLoggedIn ? (
+                <>
+                  <Encounters location={location} />
+                  <aside>
+                    <Description />
+                    <Actions />
+                  </aside>
+                </>
+              ) : (
+                <Redirect to="/" />
+              );
+            }}
           />
         </Route>
-        <Route exact="/" component={Login}></Route>
+        <Route exact path="/" component={Login}></Route>
       </Switch>
     </div>
   );
