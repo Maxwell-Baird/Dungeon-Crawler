@@ -47,7 +47,7 @@ export const usePlayerDispatch = () => {
   const loadFromLS = useCallback(() => {
     const playerData = JSON.parse(localStorage.getItem("playerStats"));
     dispatch({ type: PlayerActions.LOAD, playerData });
-  }, []);
+  }, [dispatch]);
 
   const initialize = useCallback(
     (name) => {
