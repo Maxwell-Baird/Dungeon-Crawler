@@ -17,6 +17,9 @@ const Description = () => {
     // second element is a bit of info to add to the player's description
     // ex: details[0] takes in the player's hp and maxhp and if the hp is less then half
     // of the maxhp, gives back a "you are hurt" message.
+    /**
+     * @type {[(details: any) => boolean, string][]}
+     */
     const details = [
       [({ hp, maxhp }) => hp < maxhp / 2, "You are hurt. "],
       [({ attack }) => attack < 3, "You feel weak. "],

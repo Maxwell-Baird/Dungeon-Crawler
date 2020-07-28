@@ -26,9 +26,7 @@ describe("Login", () => {
     expect(getByDisplayValue("sbeven")).toBeInTheDocument();
   });
   it("should initialize player when start button is clicked", async () => {
-    const { getByPlaceholderText, getByText, playerState } = TestWrapper(
-      <Login />
-    );
+    const { getByPlaceholderText, getByText } = TestWrapper(<Login />);
     fireEvent.change(getByPlaceholderText(/name/gi), {
       target: { value: "sbeven" },
     });
