@@ -36,5 +36,6 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.5"
-  }
+  },
+  "homepage": "https://untitled-dungeon-crawler.herokuapp.com/"
 }
