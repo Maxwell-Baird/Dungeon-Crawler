@@ -5,6 +5,7 @@ import React, {
   useCallback,
 } from "react";
 
+import { getNpcs }from '../ApiCalls'
 import { reducer, EncounterActions } from "./reducer";
 import { usePlayerState, usePlayerDispatch } from "../playerState";
 
@@ -13,8 +14,8 @@ const initialContext = {
   npc: null,
 };
 
-const StateContext = createContext(initialContext);
-const DispatchContext = createContext(undefined);
+export const StateContext = createContext(initialContext);
+export const DispatchContext = createContext(undefined);
 
 export const EncounterContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialContext);
@@ -45,9 +46,7 @@ export const useEncounterDispatch = () => {
     async (area) => {
       dispatch({ type: EncounterActions.NEW_ENCOUNTER_LOAD });
 
-      const allNpcs = await (
-        await fetch(process.env.REACT_APP_API_URL + "/npcs")
-      ).json();
+      const allNpcs = getNpcs()
 
       const locationNpcs = allNpcs.filter(
         (npc) => npc.location.toLowerCase() === area

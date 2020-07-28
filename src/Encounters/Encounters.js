@@ -7,7 +7,6 @@ const Encounters = ({ location }) => {
   const { getNewEncounter } = useEncounterDispatch();
 
   useEffect(() => {
-    debugger;
     if (!isLoading && npc === null) getNewEncounter(location);
   }, []);
 
