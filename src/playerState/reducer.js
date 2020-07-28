@@ -6,6 +6,7 @@ export const PlayerActions = {
   INC_HP: "INC_HP",
   INC_ATK: "INC_ATK",
   INC_DEF: "INC_DEF",
+  LOAD: "LOAD",
 };
 
 export const reducer = (state, action) => {
@@ -52,6 +53,8 @@ export const reducer = (state, action) => {
         ...state,
         attack: Math.max(Math.floor(state.attack * 1.05), state.attack + 1),
       };
+    case PlayerActions.LOAD:
+      return action.playerData;
     default:
       return state;
   }

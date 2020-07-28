@@ -34,10 +34,20 @@ export const usePlayerState = () => useContext(StateContext);
 
 export const usePlayerDispatch = () => {
   const dispatch = useContext(DispatchContext);
+  const player = useContext(StateContext);
 
   if (dispatch === undefined) {
     throw new Error("useDispatch used outside of provider");
   }
+
+  const saveToLS = useCallback(() => {
+    localStorage.setItem("playerStats", JSON.stringify(player));
+  }, []);
+
+  const loadFromLS = useCallback(() => {
+    const playerData = JSON.parse(localStorage.getItem("playerStats"));
+    dispatch({ type: PlayerActions.LOAD, playerData });
+  }, []);
 
   const initialize = useCallback(
     (name) => {
@@ -81,7 +91,9 @@ export const usePlayerDispatch = () => {
       heal,
       hurt,
       win,
+      saveToLS,
+      loadFromLS,
     }),
-    [initialize, changeName, heal, hurt, win]
+    [initialize, changeName, heal, hurt, win, saveToLS, loadFromLS]
   );
 };
