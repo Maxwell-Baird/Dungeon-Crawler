@@ -13,11 +13,6 @@ describe("Login", () => {
     expect(getByText("Untitled Dungeon Crawler")).toBeInTheDocument();
     expect(getByPlaceholderText(/name/gi)).toBeInTheDocument();
   });
-  it("should show the world map", () => {
-    const { getAllByText } = TestWrapper(<Login />);
-    expect(getAllByText(/~{6,}/gi).length).toBeGreaterThan(0);
-    // honestly i don't even know anymore dude
-  });
   it("should store player's name in text field", () => {
     const { getByPlaceholderText, getByDisplayValue } = TestWrapper(<Login />);
     fireEvent.change(getByPlaceholderText(/name/gi), {
