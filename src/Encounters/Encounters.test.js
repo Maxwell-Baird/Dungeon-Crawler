@@ -18,7 +18,6 @@ jest.mock("../ApiCalls", () => ({
     },
   ],
 }));
-
 describe("Encounters", () => {
   it("should render", () => {
     <PlayerContextProvider>
@@ -27,7 +26,6 @@ describe("Encounters", () => {
       </EncounterContextProvider>
     </PlayerContextProvider>;
   });
-
   it("should display npcs name", () => {
     const { getByText, getByPlaceholderText } = render(
       <PlayerContextProvider>
@@ -38,7 +36,6 @@ describe("Encounters", () => {
     );
     expect(getByText("Goblin")).toBeInTheDocument();
   });
-
   it("should display npcs defense", () => {
     const { getByText, getByPlaceholderText } = render(
       <PlayerContextProvider>
@@ -49,7 +46,6 @@ describe("Encounters", () => {
     );
     expect(getByText("DEF: 2")).toBeInTheDocument();
   });
-
   it("should display npcs health", () => {
     const { getByText, getByPlaceholderText } = render(
       <PlayerContextProvider>
@@ -60,7 +56,6 @@ describe("Encounters", () => {
     );
     expect(getByText("5 / 5 hp")).toBeInTheDocument();
   });
-
   it("should display npcs attack", () => {
     const { getByText, getByPlaceholderText } = render(
       <PlayerContextProvider>
