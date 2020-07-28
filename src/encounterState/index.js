@@ -14,8 +14,8 @@ const initialContext = {
   npc: null,
 };
 
-const StateContext = createContext(initialContext);
-const DispatchContext = createContext(undefined);
+export const StateContext = createContext(initialContext);
+export const DispatchContext = createContext(undefined);
 
 export const EncounterContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialContext);
