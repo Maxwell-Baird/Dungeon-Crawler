@@ -8,7 +8,7 @@ describe("UserStats", () => {
     TestWrapper(<UserStats />);
   });
   it("should have name, HP, Atk, and Def by default", () => {
-    const { getByText, getByPlaceholderText } = TestWrapper(<UserStats />);
+    const { getByText } = TestWrapper(<UserStats />);
     expect(getByText("Name:")).toBeInTheDocument();
     expect(getByText("HP: 0 / 0")).toBeInTheDocument();
     expect(getByText("Atk: 0")).toBeInTheDocument();

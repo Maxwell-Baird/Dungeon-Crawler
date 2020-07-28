@@ -6,7 +6,8 @@ import "@testing-library/jest-dom/extend-expect";
 import { PlayerContextProvider } from "../playerState";
 import { EncounterContextProvider } from "../encounterState";
 import { BrowserRouter as Router } from "react-router-dom";
-import { getNpcs } from "../ApiCalls";
+import App from "./App";
+
 jest.mock("../ApiCalls", () => ({
   getNpcs: () => [
     {
@@ -28,18 +29,21 @@ jest.mock("../ApiCalls", () => ({
     },
   ],
 }));
-import App from "./App";
 
 describe("App", () => {
   it("should render the app", () => {
-    <PlayerContextProvider>
-      <EncounterContextProvider>
-        <App />
-      </EncounterContextProvider>
-    </PlayerContextProvider>;
+    render(
+      <Router>
+        <PlayerContextProvider>
+          <EncounterContextProvider>
+            <App />
+          </EncounterContextProvider>
+        </PlayerContextProvider>
+      </Router>
+    );
   });
   it("Should be able to create character", () => {
-    const { getByText, getByPlaceHolderText } = render(
+    const { getByText } = render(
       <Router>
         <PlayerContextProvider>
           <EncounterContextProvider>
@@ -62,7 +66,7 @@ describe("App", () => {
   });
 
   it("The player should see a map with some location text, name and health bar", () => {
-    const { getByText, getByPlaceHolderText } = render(
+    const { getByText } = render(
       <Router>
         <PlayerContextProvider>
           <EncounterContextProvider>
@@ -88,7 +92,7 @@ describe("App", () => {
   });
 
   it("Should be able to run into an encounter", async () => {
-    const { getByText, getByPlaceHolderText } = render(
+    const { getByText } = render(
       <Router>
         <PlayerContextProvider>
           <EncounterContextProvider>
@@ -124,14 +128,11 @@ describe("App", () => {
     const fightButton = await waitForElement(() => getByText("Fight"));
     expect(fightButton).toBeInTheDocument();
 
-    const talkButton = await waitForElement(() => getByText("Talk"));
-    expect(encounterHP).toBeInTheDocument();
-
     const runButton = await waitForElement(() => getByText("Run Away"));
     expect(runButton).toBeInTheDocument();
   });
   it("Should be able to attack the encounter", async () => {
-    const { getByText, getByPlaceHolderText } = render(
+    const { getByText } = render(
       <Router>
         <PlayerContextProvider>
           <EncounterContextProvider>
@@ -140,11 +141,6 @@ describe("App", () => {
         </PlayerContextProvider>
       </Router>
     );
-
-    // const locationEL = getByText('Go to the forest')
-    // expect(locationEL).toBeInTheDocument();
-
-    // fireEvent.click(getByText('Go to the forest'));
 
     const encounterName = await waitForElement(() => getByText("Goblin"));
     expect(encounterName).toBeInTheDocument();
@@ -158,7 +154,6 @@ describe("App", () => {
     const fightButton = await waitForElement(() => getByText("Fight"));
     expect(fightButton).toBeInTheDocument();
 
-    const talkButton = await waitForElement(() => getByText("Talk"));
     expect(encounterHP).toBeInTheDocument();
 
     const runButton = await waitForElement(() => getByText("Run Away"));
@@ -170,8 +165,8 @@ describe("App", () => {
     expect(encounterATK).toBeInTheDocument();
   });
 
-  it("Should be able to Talk to the encounter", async () => {
-    const { getByText, getByPlaceHolderText } = render(
+  it.skip("Should be able to Talk to the encounter", async () => {
+    const { getByText } = render(
       <Router>
         <PlayerContextProvider>
           <EncounterContextProvider>
@@ -181,62 +176,60 @@ describe("App", () => {
       </Router>
     );
 
-    // const encounterName = await waitForElement( () => getByText('Goblin'))
-    // expect(encounterName).toBeInTheDocument();
+    const encounterName = await waitForElement(() => getByText("Goblin"));
+    expect(encounterName).toBeInTheDocument();
 
-    // const encounterDEF = await waitForElement( () => getByText('ATK: 3'))
-    // expect(encounterDEF).toBeInTheDocument();
+    const encounterDEF = await waitForElement(() => getByText("ATK: 3"));
+    expect(encounterDEF).toBeInTheDocument();
 
-    // const encounterHP = await waitForElement( () => getByText('DEF: 2'))
-    // expect(encounterHP).toBeInTheDocument();
+    const encounterHP = await waitForElement(() => getByText("DEF: 2"));
+    expect(encounterHP).toBeInTheDocument();
 
-    // const fightButton = await waitForElement( () => getByText('Fight'))
-    // expect(fightButton).toBeInTheDocument();
+    const fightButton = await waitForElement(() => getByText("Fight"));
+    expect(fightButton).toBeInTheDocument();
 
-    // const talkButton = await waitForElement( () => getByText('Talk'))
-    // expect(encounterHP).toBeInTheDocument();
+    expect(encounterHP).toBeInTheDocument();
 
-    // const runButton = await waitForElement( () => getByText('Run Away'))
-    // expect(runButton).toBeInTheDocument();
+    const runButton = await waitForElement(() => getByText("Run Away"));
+    expect(runButton).toBeInTheDocument();
 
     fireEvent.click(getByText("Talk"));
 
-    const encounterATK = await waitForElement(() => getByText("Name:"));
-    expect(encounterATK).toBeInTheDocument();
-  });
-
-  it.skip("Should be able to run away from the encounter", async () => {
-    const { getByText, getByPlaceHolderText } = render(
-      <Router>
-        <PlayerContextProvider>
-          <EncounterContextProvider>
-            <App />
-          </EncounterContextProvider>
-        </PlayerContextProvider>
-      </Router>
-    );
-
-    // const encounterName = await waitForElement( () => getByText('Goblin'))
-    // expect(encounterName).toBeInTheDocument();
-
-    // const encounterDEF = await waitForElement( () => getByText('ATK: 3'))
-    // expect(encounterDEF).toBeInTheDocument();
-
-    // const encounterHP = await waitForElement( () => getByText('DEF: 2'))
-    // expect(encounterHP).toBeInTheDocument();
-
-    // const fightButton = await waitForElement( () => getByText('Fight'))
-    // expect(fightButton).toBeInTheDocument();
-
-    // const talkButton = await waitForElement( () => getByText('Talk'))
-    // expect(encounterHP).toBeInTheDocument();
-
-    // const runButton = await waitForElement( () => getByText('Run Away'))
-    // expect(runButton).toBeInTheDocument();
-
-    fireEvent.click(getByText("Run Away"));
-
     const encounterATK = await waitForElement(() => getByText("5 / 5 hp"));
     expect(encounterATK).toBeInTheDocument();
+
+    it.skip("Should be able to run away from the encounter", async () => {
+      const { getByText } = render(
+        <Router>
+          <PlayerContextProvider>
+            <EncounterContextProvider>
+              <App />
+            </EncounterContextProvider>
+          </PlayerContextProvider>
+        </Router>
+      );
+
+      const encounterName = await waitForElement(() => getByText("Goblin"));
+      expect(encounterName).toBeInTheDocument();
+
+      const encounterDEF = await waitForElement(() => getByText("ATK: 3"));
+      expect(encounterDEF).toBeInTheDocument();
+
+      const encounterHP = await waitForElement(() => getByText("DEF: 2"));
+      expect(encounterHP).toBeInTheDocument();
+
+      const fightButton = await waitForElement(() => getByText("Fight"));
+      expect(fightButton).toBeInTheDocument();
+
+      expect(encounterHP).toBeInTheDocument();
+
+      const runButton = await waitForElement(() => getByText("Run Away"));
+      expect(runButton).toBeInTheDocument();
+
+      fireEvent.click(getByText("Run Away"));
+
+      const encounterATK = await waitForElement(() => getByText("5 / 5 hp"));
+      expect(encounterATK).toBeInTheDocument();
+    });
   });
 });
