@@ -42,11 +42,16 @@ export const usePlayerDispatch = () => {
 
   const saveToLS = useCallback(() => {
     localStorage.setItem("playerStats", JSON.stringify(player));
-  }, []);
+  }, [player]);
 
   const loadFromLS = useCallback(() => {
     const playerData = JSON.parse(localStorage.getItem("playerStats"));
-    dispatch({ type: PlayerActions.LOAD, playerData });
+    if (playerData) dispatch({ type: PlayerActions.LOAD, playerData });
+  }, [dispatch]);
+
+  const clearLSData = useCallback(() => {
+    localStorage.removeItem("playerStats");
+    dispatch({ type: PlayerActions.CLEAR });
   }, [dispatch]);
 
   const initialize = useCallback(
@@ -93,7 +98,8 @@ export const usePlayerDispatch = () => {
       win,
       saveToLS,
       loadFromLS,
+      clearLSData,
     }),
-    [initialize, changeName, heal, hurt, win, saveToLS, loadFromLS]
+    [initialize, changeName, heal, hurt, win, saveToLS, loadFromLS, clearLSData]
   );
 };

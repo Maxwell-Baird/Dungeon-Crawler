@@ -7,6 +7,7 @@ export const PlayerActions = {
   INC_ATK: "INC_ATK",
   INC_DEF: "INC_DEF",
   LOAD: "LOAD",
+  CLEAR: "CLEAR",
 };
 
 export const reducer = (state, action) => {
@@ -55,6 +56,14 @@ export const reducer = (state, action) => {
       };
     case PlayerActions.LOAD:
       return action.playerData;
+    case PlayerActions.CLEAR:
+      return {
+        name: "",
+        hp: 0,
+        maxhp: 0,
+        attack: 0,
+        defense: 0,
+      };
     default:
       return state;
   }
