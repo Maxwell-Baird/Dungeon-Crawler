@@ -4,6 +4,9 @@ import "./Map.css";
 
 const Map = () => {
   const formattedStr = useMemo(() => {
+    /**
+     * @type {[RegExp, string][]}
+     */
     const colTags = [
       [/([/|\\]+)/g, "<s>$&</s>"],
       [/(~+)/g, "<b>$&</b>"],

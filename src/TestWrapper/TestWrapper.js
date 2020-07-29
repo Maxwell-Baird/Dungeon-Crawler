@@ -28,21 +28,23 @@ const TestComponent = ({ component }) => {
 
 const TestWrapper = (component) => {
   let history = createMemoryHistory();
+  let element = (
+    <Router history={history}>
+      <PlayerContextProvider>
+        <EncounterContextProvider>
+          <TestComponent component={component} />
+        </EncounterContextProvider>
+      </PlayerContextProvider>
+    </Router>
+  );
   return {
-    ...render(
-      <Router history={history}>
-        <PlayerContextProvider>
-          <EncounterContextProvider>
-            <TestComponent component={component} />
-          </EncounterContextProvider>
-        </PlayerContextProvider>
-      </Router>
-    ),
+    ...render(element),
     playerState,
     playerDispatch,
     encounterState,
     encounterDispatch,
     history,
+    element,
   };
 };
 
