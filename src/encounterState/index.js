@@ -5,7 +5,7 @@ import React, {
   useCallback,
 } from "react";
 
-import { getNpcs }from '../ApiCalls'
+import { getNpcs } from "../ApiCalls";
 import { reducer, EncounterActions } from "./reducer";
 import { usePlayerState, usePlayerDispatch } from "../playerState";
 
@@ -46,7 +46,7 @@ export const useEncounterDispatch = () => {
     async (area) => {
       dispatch({ type: EncounterActions.NEW_ENCOUNTER_LOAD });
 
-      const allNpcs = getNpcs()
+      const allNpcs = await getNpcs();
 
       const locationNpcs = allNpcs.filter(
         (npc) => npc.location.toLowerCase() === area
