@@ -6,6 +6,8 @@ export const PlayerActions = {
   INC_HP: "INC_HP",
   INC_ATK: "INC_ATK",
   INC_DEF: "INC_DEF",
+  LOAD: "LOAD",
+  CLEAR: "CLEAR",
 };
 
 export const reducer = (state, action) => {
@@ -51,6 +53,16 @@ export const reducer = (state, action) => {
       return {
         ...state,
         attack: Math.max(Math.floor(state.attack * 1.05), state.attack + 1),
+      };
+    case PlayerActions.LOAD:
+      return action.playerData;
+    case PlayerActions.CLEAR:
+      return {
+        name: "",
+        hp: 0,
+        maxhp: 0,
+        attack: 0,
+        defense: 0,
       };
     default:
       return state;

@@ -10,3 +10,15 @@
 .red {
   color: #f66;
 }
+
+.User-Stats button {
+  border: none;
+  background: none;
+  height: 1rem;
+  text-decoration: underline;
+  margin-left: auto;
+}
+
+.warning {
+  color: #f66;
+}

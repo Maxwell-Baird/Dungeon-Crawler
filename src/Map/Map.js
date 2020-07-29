@@ -1,8 +1,12 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import { mapImage } from "./MapImage";
 import "./Map.css";
+import { usePlayerDispatch } from "../playerState";
 
 const Map = () => {
+  const { saveToLS } = usePlayerDispatch();
+  useEffect(saveToLS, []); // save player when they go to the map screen
+
   const formattedStr = useMemo(() => {
     const colTags = [
       [/([/|\\]+)/g, "<s>$&</s>"],
