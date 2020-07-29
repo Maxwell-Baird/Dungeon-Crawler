@@ -1,6 +1,7 @@
 # Untitled Dungeon Crawler
 
 [![Build Status](https://travis-ci.org/Maxwell-Baird/Dungeon-Crawler.svg?branch=master)](https://travis-ci.org/Maxwell-Baird/Dungeon-Crawler)
+
 A game we made for class
 
 ## Introduction
