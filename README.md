@@ -7,6 +7,12 @@ A game we made for class
 ## Introduction
 
 [Untitled Dungeon Crawler](https://untitled-dungeon-crawler.herokuapp.com/) is a website dedicated to recreating the experience of an old dungeon crawler/adventure RPG game, in your browser.
+[Backend API](https://github.com/Maxwell-Baird/Dungeon-Crawler-BE/)
+[Production API](https://whispering-temple-46123.herokuapp.com/api/v1/npcs)
+
+## Contributors
+
+Ruby Rinken, Maxwell Baird, DeMarcus Kirby, Justin Corbin, Trond Makonese
 
 ## Technologies
 
@@ -20,7 +26,7 @@ A game we made for class
 
 ## Usage / Installation
 
-To use the app, either click [here](https://untitled-dungeon-crawler.herokuapp.com/), which will take you to the live, deployed app, or clone this repo and run `npm i && npm start`.
+To use the app, either click [here](https://untitled-dungeon-crawler.herokuapp.com/), which will take you to the live, deployed app, or clone this repo and run `npm i && npm start`. You will also need to download and setup the [backend api](https://github.com/Maxwell-Baird/Dungeon-Crawler-BE) or connect to the [production API](https://whispering-temple-46123.herokuapp.com/api/v1/npcs)
 
 ## Testing
 
