@@ -6,7 +6,7 @@ A game we made for class
 
 ## Introduction
 
-[Untitled Dungeon Crawler](https://untitled-dungeon-crawler.herokuapp.com/) is a website dedicated to recreating the experience of an old dungeon crawler/adventure RPG game, in your browser.
+[Untitled Dungeon Crawler](https://untitled-dungeon-crawler.herokuapp.com/) is a website dedicated to recreating the experience of an old dungeon crawler/adventure RPG game, in your browser. There is also an custom built API which returns NPCs for the game.
 
 [Backend API](https://github.com/Maxwell-Baird/Dungeon-Crawler-BE/)
 
